@@ -73,7 +73,7 @@ class StateMachine {
             this.consumers.emit(topic, updateObj)
             if (topic === this.defaultTopic) {
                 log.debug('stateMachine', 'pub', 'defaulttopic match:', updateObj)
-                Object.entries(updateObj).forEach((stateKey, stateVal) => this.consumers.emit(stateKey, { [stateKey]: stateVal }))
+                Object.entries(updateObj).forEach(([stateKey, stateVal]) => this.consumers.emit(stateKey, { [stateKey]: stateVal }))
             }
         }
     }
