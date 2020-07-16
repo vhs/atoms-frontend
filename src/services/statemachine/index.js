@@ -73,13 +73,7 @@ class StateMachine {
             this.consumers.emit(topic, updateObj)
             if (topic === this.defaultTopic) {
                 log.debug('stateMachine', 'pub', 'defaulttopic match:', updateObj)
-                for (let stateKey in updateObj) {
-                    log.debug('stateMachine', 'pub', 'stateKey:', stateKey, '->', updateObj[stateKey])
-                    let newStateObj = {}
-                    newStateObj[stateKey] = updateObj[stateKey]
-                    log.debug('stateMachine', 'pub', 'newStateObj:', newStateObj)
-                    this.consumers.emit(stateKey, newStateObj)
-                }
+                Object.entries(updateObj).forEach((stateKey, stateVal) => this.consumers.emit(stateKey, { [stateKey]: stateVal }))
             }
         }
     }
