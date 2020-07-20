@@ -21,8 +21,8 @@ class StateMachine {
         }, 15000)
     }
 
-    fetch(topic) {
-        return (this.store[topic] !== undefined) ? this.store[topic] : null
+    fetch(topic, defaultVal) {
+        return (this.store[topic] !== undefined) ? { [topic]: this.store[topic] } : { [topic]: defaultVal || null }
     }
 
     pub(topic, args) {
