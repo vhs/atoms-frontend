@@ -10,6 +10,10 @@ import { Row, Col } from 'react-bootstrap'
 import DeviceCard from '../../Components/DeviceCard'
 import Loading from '../../Components/Loading'
 
+import CustomLogger from '../../lib/custom-logger'
+
+const log = new CustomLogger('atoms:Components:Devices')
+
 const DeviceCards = ({ devices, roles, user }) => {
     var DeviceCardsResult = devices.map(device => {
         return (
@@ -33,7 +37,7 @@ class Devices extends Component {
             }, ...props
         }
 
-        console.log('Devices', 'props', props)
+        log.debug('Devices', 'props', props)
     }
 
     componentDidMount() {
@@ -44,13 +48,13 @@ class Devices extends Component {
         stateMachine.attach('user', this.setState.bind(this))
         stateMachine.attach('devices', this.setState.bind(this))
 
-        if (this.state)
+        if ((this.state.user !== undefined) && (this.state.user.administrator !== undefined))
             this.setState({ loading: false })
     }
 
     async getDevices() {
         let response = await axios.get('/api/devices/')
-        console.log(response.data)
+        log.debug('getDevices', response.data)
         this.setState({ devices: response.data })
     }
 

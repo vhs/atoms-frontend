@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { Row, Col, Form, FormControl, Button } from 'react-bootstrap'
 import TimeAgo from 'anderm-react-timeago'
 
+import stateMachine from '../../services/statemachine'
+
 import AdminElement from '../AdminElement'
 
 import './style.css'
@@ -28,12 +30,23 @@ class DeviceCard extends Component {
         super(props)
         console.log('DeviceCard', 'props', props)
         this.intervalIds = {}
-        this.state = { ...{ device: {}, roles: [], user: {} }, ...props }
+        this.state = { ...{ device: {}, roles: [], user: { administrator: false, authenticated: false } }, ...props }
         this.deviceHot = this._deviceHot.bind(this)
         this.getDevice = this._getDevice.bind(this)
         this.deleteDevice = this._deleteDevice.bind(this)
         this.updateDescription = this._updateDescription.bind(this)
         this.updateRole = this._updateRole.bind(this)
+    }
+
+    componentDidMount() {
+        this.intervalIds.getDevice = setInterval(this.getDevice, 1000)
+        this.setState(this.stateMachine.fetch('user', { administrator: false, authenticated: false }))
+    }
+
+    componentWillUnmount() {
+        for (let intervalId in this.intervalIds) {
+            clearInterval(this.intervalIds[intervalId])
+        }
     }
 
     async _getDevice() {
@@ -94,16 +107,6 @@ class DeviceCard extends Component {
         let response = await axios.post('/api/devices/update/role/' + this.state.device.id, { role })
 
         return true;
-    }
-
-    componentDidMount() {
-        this.intervalIds.getDevice = setInterval(this.getDevice, 1000)
-    }
-
-    componentWillUnmount() {
-        for (let intervalId in this.intervalIds) {
-            clearInterval(this.intervalIds[intervalId])
-        }
     }
 
     render() {
