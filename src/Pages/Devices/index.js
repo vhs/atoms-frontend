@@ -8,7 +8,7 @@ import stateMachine from '../../services/statemachine'
 import { Row, Col } from 'react-bootstrap'
 
 import DeviceCard from '../../Components/DeviceCard'
-import LoadingScreen from '../../Components/LoadingScreen'
+import Loading from '../../Components/Loading'
 
 const DeviceCards = ({ devices, roles, user }) => {
     var DeviceCardsResult = devices.map(device => {
@@ -24,23 +24,26 @@ class Devices extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            devices: [],
-            roles: [],
-            loading: true
+            ...{
+                devices: [],
+                roles: [],
+                loading: true
+            }, ...props
         }
 
         console.log('Devices', 'props', props)
     }
 
     componentDidMount() {
-        this.setState({loading: false})
-
         this.getDevices()
         setInterval(this.getDevices.bind(this), 5000)
 
         stateMachine.attach('loggedIn', this.setState.bind(this))
         stateMachine.attach('user', this.setState.bind(this))
         stateMachine.attach('devices', this.setState.bind(this))
+
+        if (this.state)
+            this.setState({ loading: false })
     }
 
     async getDevices() {
@@ -51,7 +54,7 @@ class Devices extends Component {
 
     render() {
         return (
-            <LoadingScreen loading={this.state.loading}>
+            <Loading loading={this.state.loading}>
                 <Row>
                     <Col>
                         <h1>Devices</h1>
@@ -60,7 +63,7 @@ class Devices extends Component {
                 <Row>
                     {this.state.devices.length > 0 ? <DeviceCards devices={this.state.devices} roles={this.state.roles} user={this.state.user} /> : <span>Sorry! We can't find any devices at this time!</span>}
                 </Row>
-            </LoadingScreen>
+            </Loading>
         )
     }
 }

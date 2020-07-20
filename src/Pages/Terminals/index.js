@@ -7,6 +7,7 @@ import stateMachine from '../../services/statemachine'
 import { Row, Col } from 'react-bootstrap'
 
 import TerminalCard from '../../Components/TerminalCard'
+import Loading from '../../Components/Loading'
 
 import CustomLogger from '../../lib/custom-logger'
 
@@ -26,9 +27,11 @@ class Terminals extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            devices: [],
-            terminals: [],
-            loading: true
+            ...{
+                devices: [],
+                terminals: [],
+                loading: true
+            }, ...props
         }
     }
 
@@ -59,7 +62,7 @@ class Terminals extends Component {
 
     render() {
         return (
-            <LoadingScreen loading={this.state.loading}>
+            <Loading loading={this.state.loading}>
                 <Row>
                     <Col>
                         <h1>Terminals</h1>
@@ -70,7 +73,7 @@ class Terminals extends Component {
                         {this.state.terminals.length > 0 ? <TerminalCards terminals={this.state.terminals} devices={this.state.devices} roles={this.state.roles} user={this.state.user} /> : <span>Sorry! We can't find any terminals at this time!</span>}
                     </Col>
                 </Row>
-            </LoadingScreen>
+            </Loading>
         )
     }
 }
