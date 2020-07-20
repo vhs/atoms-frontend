@@ -37,6 +37,16 @@ class TerminalCard extends Component {
         this.updateTarget = this._updateTarget.bind(this)
     }
 
+    componentDidMount() {
+        this.intervalIds.getTerminal = setInterval(this.getTerminal.bind(this), 1000)
+    }
+
+    componentWillUnmount() {
+        for (let intervalId in this.intervalIds) {
+            clearInterval(this.intervalIds[intervalId])
+        }
+    }
+
     async _getTerminal() {
         let response = await axios.get('/api/terminals/details/' + this.state.terminal.id)
 
@@ -128,16 +138,6 @@ class TerminalCard extends Component {
         log.debug('_updateEnabled', response)
 
         return true;
-    }
-
-    componentDidMount() {
-        this.intervalIds.getTerminal = setInterval(this.getTerminal.bind(this), 1000)
-    }
-
-    componentWillUnmount() {
-        for (let intervalId in this.intervalIds) {
-            clearInterval(this.intervalIds[intervalId])
-        }
     }
 
     render() {
