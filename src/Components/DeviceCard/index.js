@@ -31,6 +31,7 @@ class DeviceCard extends Component {
         log.debug('DeviceCard', 'props', props)
         this.intervalIds = {}
         this.state = { ...{ device: {}, roles: [], user: { administrator: false, authenticated: false } }, ...props }
+        log.debug('DeviceCard', 'state', state)
         this.deviceHot = this._deviceHot.bind(this)
         this.getDevice = this._getDevice.bind(this)
         this.deleteDevice = this._deleteDevice.bind(this)
