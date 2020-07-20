@@ -15,6 +15,7 @@ import CustomLogger from '../../lib/custom-logger'
 const log = new CustomLogger('atoms:Components:Devices')
 
 const DeviceCards = ({ devices, roles, user }) => {
+    log.debug('DeviceCards', { devices, roles, user })
     var DeviceCardsResult = devices.map(device => {
         return (
             <DeviceCard key={device.id} device={device} roles={roles} user={user} />
