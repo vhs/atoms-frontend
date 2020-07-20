@@ -27,7 +27,9 @@ class Devices extends Component {
             ...{
                 devices: [],
                 roles: [],
-                loading: true
+                loading: true,
+                user: { authenticated: false, administrator: false },
+                loggedIn: false
             }, ...props
         }
 

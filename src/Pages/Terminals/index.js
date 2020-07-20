@@ -30,7 +30,9 @@ class Terminals extends Component {
             ...{
                 devices: [],
                 terminals: [],
-                loading: true
+                loading: true,
+                user: { authenticated: false, administrator: false },
+                loggedIn: false
             }, ...props
         }
     }
