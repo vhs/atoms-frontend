@@ -38,7 +38,7 @@ class Devices extends Component {
             }, ...props
         }
 
-        log.debug('Devices', 'props', props)
+        log.debug('Devices', 'state', state)
     }
 
     componentDidMount() {

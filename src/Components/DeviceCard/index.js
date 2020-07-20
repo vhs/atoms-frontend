@@ -28,7 +28,7 @@ class DeviceCard extends Component {
 
     constructor(props) {
         super(props)
-        console.log('DeviceCard', 'props', props)
+        log.debug('DeviceCard', 'props', props)
         this.intervalIds = {}
         this.state = { ...{ device: {}, roles: [], user: { administrator: false, authenticated: false } }, ...props }
         this.deviceHot = this._deviceHot.bind(this)
@@ -40,7 +40,9 @@ class DeviceCard extends Component {
 
     componentDidMount() {
         this.intervalIds.getDevice = setInterval(this.getDevice, 1000)
-        this.setState(stateMachine.fetch('user', { administrator: false, authenticated: false }))
+        let newUserState = stateMachine.fetch('user', { administrator: false, authenticated: false })
+        log.debug('componentDidMount', 'newUserState', newUserState)
+        this.setState(newUserState)
     }
 
     componentWillUnmount() {

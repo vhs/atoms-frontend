@@ -1,15 +1,24 @@
 import React, { Component } from 'react'
 
+import CustomLogger from '../../lib/custom-logger'
+
+const log = new CustomLogger('atoms:Components:AdminElement')
+
 class AdminElement extends Component {
     constructor(props) {
         super(props)
-        console.log('AdminElement', 'props', props)
+        log.debug('props', props)
     }
-    
+
     render() {
+        let isAdmin = (this.props.user.administrator !== undefined && this.props.user.administrator === true)
+
+        log.debug('render', 'isAdmin', isAdmin)
+        log.debug('render', 'this.props.user.administrator', this.props.user.administrator)
+
         return (
             <>
-                {(this.props.user.administrator !== undefined && this.props.user.administrator === true) ? this.props.children : null}
+                {isAdmin ? this.props.children : null}
             </>
         )
     }
