@@ -27,7 +27,8 @@ class Terminals extends Component {
         super(props)
         this.state = {
             devices: [],
-            terminals: []
+            terminals: [],
+            loading: true
         }
     }
 
@@ -36,10 +37,12 @@ class Terminals extends Component {
         this.getTerminals()
         setInterval(this.getDevices.bind(this), 5000)
         setInterval(this.getTerminals.bind(this), 5000)
-        
+
         stateMachine.attach('loggedIn', this.setState.bind(this))
         stateMachine.attach('user', this.setState.bind(this))
         stateMachine.attach('roles', this.setState.bind(this))
+
+        this.setState({ loading: false })
     }
 
     async getDevices() {
@@ -56,7 +59,7 @@ class Terminals extends Component {
 
     render() {
         return (
-            <>
+            <LoadingScreen loading={this.state.loading}>
                 <Row>
                     <Col>
                         <h1>Terminals</h1>
@@ -67,7 +70,7 @@ class Terminals extends Component {
                         {this.state.terminals.length > 0 ? <TerminalCards terminals={this.state.terminals} devices={this.state.devices} roles={this.state.roles} user={this.state.user} /> : <span>Sorry! We can't find any terminals at this time!</span>}
                     </Col>
                 </Row>
-            </>
+            </LoadingScreen>
         )
     }
 }
