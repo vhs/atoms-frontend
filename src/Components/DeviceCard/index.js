@@ -40,7 +40,7 @@ class DeviceCard extends Component {
 
     componentDidMount() {
         this.intervalIds.getDevice = setInterval(this.getDevice, 1000)
-        this.setState(this.stateMachine.fetch('user', { administrator: false, authenticated: false }))
+        this.setState(stateMachine.fetch('user', { administrator: false, authenticated: false }))
     }
 
     componentWillUnmount() {
