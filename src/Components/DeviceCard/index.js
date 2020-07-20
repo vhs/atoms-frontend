@@ -124,7 +124,7 @@ class DeviceCard extends Component {
                                 {this.state.device.description}
                             </Col>
                         </Row>
-                        <AdminElement user={this.props.user}>
+                        <AdminElement user={this.state.user}>
                             <Row className="spacious">
                                 <Col>
                                     <b> Description:</b>
@@ -164,7 +164,7 @@ class DeviceCard extends Component {
                         </Row>
                         <Row className="spacious">
                             <Col>
-                                <AdminElement user={this.props.user}><Button className="btn-danger" onClick={this.deleteDevice}>DELETE</Button></AdminElement>
+                                <AdminElement user={this.state.user}><Button className="btn-danger" onClick={this.deleteDevice}>DELETE</Button></AdminElement>
                             </Col>
                             <Col>
                             </Col>

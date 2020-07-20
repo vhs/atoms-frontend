@@ -9,7 +9,7 @@ class AdminElement extends Component {
     render() {
         return (
             <>
-                {this.props.user.administrator ? this.props.children : null}
+                {(this.props.user.administrator !== undefined && this.props.user.administrator === true) ? this.props.children : null}
             </>
         )
     }
