@@ -11,7 +11,7 @@ import './style.css'
 
 import CustomLogger from '../../lib/custom-logger'
 
-const log = new CustomLogger('atoms:Components:DeviceCard')
+const log = new CustomLogger('tacos:Components:DeviceCard')
 
 const RoleOptions = ({ roles }) => {
     var RolesOptionsResult = roles.map(role => {

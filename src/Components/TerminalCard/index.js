@@ -7,7 +7,7 @@ import './style.css'
 
 import CustomLogger from '../../lib/custom-logger'
 
-const log = new CustomLogger('atoms:Components:TerminalCard')
+const log = new CustomLogger('tacos:Components:TerminalCard')
 
 const TargetOptions = ({ targets }) => {
     var TargetsOptionsResult = targets.map(target => {
@@ -26,7 +26,7 @@ class TerminalCard extends Component {
         super(props)
         log.debug('TerminalCard', 'props', props)
         this.intervalIds = {}
-        
+
         this.state = { ...{ terminal: {}, devices: [], targets: [], user: {} }, ...props }
 
         this.getTerminal = this._getTerminal.bind(this)
@@ -172,7 +172,8 @@ class TerminalCard extends Component {
                             </Col>
                             <Col>
                                 <Form.Group controlId="SelectTarget">
-                                    <Form.Control as="select" custom value={this.state.terminal.target} onChange={this.updateTarget}>
+                                    <Form.Control as="select" custom value={this.state.terminal.target || '---'} onChange={this.updateTarget}>
+                                        <option>---</option>
                                         <TargetOptions targets={this.state.devices} />
                                     </Form.Control>
                                 </Form.Group>

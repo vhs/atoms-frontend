@@ -25,7 +25,7 @@ import apiSvc from './services/api'
 
 import CustomLogger from './lib/custom-logger'
 
-var log = new CustomLogger('atoms:app')
+var log = new CustomLogger('tacos:app')
 
 class App extends Component {
   constructor(props) {

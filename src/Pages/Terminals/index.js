@@ -11,7 +11,7 @@ import Loading from '../../Components/Loading'
 
 import CustomLogger from '../../lib/custom-logger'
 
-const log = new CustomLogger('atoms:Pages:Terminals')
+const log = new CustomLogger('tacos:Pages:Terminals')
 
 const TerminalCards = ({ terminals, devices, roles, user }) => {
     var TerminalCardsResult = terminals.map(terminal => {

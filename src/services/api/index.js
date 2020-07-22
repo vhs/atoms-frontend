@@ -4,7 +4,7 @@ import stateMachine from '../statemachine'
 
 import CustomLogger from '../../lib/custom-logger'
 
-var log = new CustomLogger('atoms:services:api')
+var log = new CustomLogger('tacos:services:api')
 
 class APIService {
     intervalIds

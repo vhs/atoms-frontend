@@ -10,7 +10,7 @@ import './style.css'
 
 import CustomLogger from '../../lib/custom-logger'
 
-var log = new CustomLogger('atoms:components:menu')
+var log = new CustomLogger('tacos:components:menu')
 
 class Menu extends Component {
     constructor(props) {
@@ -29,7 +29,7 @@ class Menu extends Component {
     render() {
         return (
             <Navbar>
-                <Navbar.Brand><Nav.Link to="/">ATOMS</Nav.Link></Navbar.Brand>
+                <Navbar.Brand><Nav.Link to="/">TACOS</Nav.Link></Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Nav className="mr-auto">

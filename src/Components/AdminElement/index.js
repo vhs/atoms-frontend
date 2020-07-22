@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import CustomLogger from '../../lib/custom-logger'
 
-const log = new CustomLogger('atoms:Components:AdminElement')
+const log = new CustomLogger('tacos:Components:AdminElement')
 
 class AdminElement extends Component {
     constructor(props) {

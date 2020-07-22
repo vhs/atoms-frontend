@@ -1,6 +1,6 @@
 import CustomLogger from '../../lib/custom-logger'
 
-var log = new CustomLogger('atoms:services:statemachine')
+var log = new CustomLogger('tacos:services:statemachine')
 
 const EventEmitter = require('events')
 
