@@ -42,7 +42,7 @@ class Login extends Component {
                 </Row>
                 <Row className="spacious">
                     <Col>
-                        To access TACOS, your membership account needs to be linked to one of the providers above. You can link your membership account below:<br />
+                        To access TAC•OS, your membership account needs to be linked to one of the providers above. You can link your membership account below:<br />
                         <a href="https://membership.vanhack.ca">NOMOS</a>
                     </Col>
                 </Row>
