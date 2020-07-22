@@ -13,7 +13,7 @@ class Menu extends Component {
         return (
             <Row>
                 <Col>
-                    <h3>Welcome to TACOS!</h3>
+                    <h3>Welcome to TAC•OS!</h3>
                     <p>The Tool Access Control and Operations System</p>
                     <p>Please <a href="/login" className="btn btn-primary">Login</a> to unlock or manage tools!</p>
                 </Col>
