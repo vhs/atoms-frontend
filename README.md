@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TACOS - Frontend
+
+This is the React frontend respository for the [Tool Access Control and Operations System (TACOS)](https://github.com/vhs/tacos).
 
 ## Available Scripts
 
