@@ -29,7 +29,7 @@ class Menu extends Component {
     render() {
         return (
             <Navbar>
-                <Navbar.Brand><Nav.Link to="/">TACOS</Nav.Link></Navbar.Brand>
+                <Navbar.Brand><Nav.Link to="/">TAC•OS</Nav.Link></Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Nav className="mr-auto">
