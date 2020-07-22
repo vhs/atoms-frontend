@@ -1,6 +1,6 @@
-# TACOS - Frontend
+# TAC•OS - Frontend
 
-This is the React frontend respository for the [Tool Access Control and Operations System (TACOS)](https://github.com/vhs/tacos).
+This is the React frontend respository for the [Tool Access Control and Operations System (TAC•OS)](https://github.com/vhs/tacos).
 
 ## Available Scripts
 
