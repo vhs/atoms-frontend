@@ -26,8 +26,12 @@ const DeviceCards = ({ devices, roles, user }) => {
 }
 
 class Devices extends Component {
+    intervals
+
     constructor(props) {
         super(props)
+        this.intervals = {}
+
         this.state = {
             ...{
                 devices: [],
@@ -37,25 +41,25 @@ class Devices extends Component {
                 loggedIn: false
             }, ...props
         }
-
-        log.debug('Devices', 'state', this.state)
     }
 
     componentDidMount() {
         this.getDevices()
-        setInterval(this.getDevices.bind(this), 5000)
+        this.intervals.getDevices = setInterval(this.getDevices.bind(this), 5000)
 
         stateMachine.attach('loggedIn', this.setState.bind(this))
         stateMachine.attach('user', this.setState.bind(this))
-        stateMachine.attach('devices', this.setState.bind(this))
 
         if ((this.state.user !== undefined) && (this.state.user.administrator !== undefined))
             this.setState({ loading: false })
     }
 
+    componentWillUnmount() {
+        clearInterval(this.intervals.getDevices)
+    }
+
     async getDevices() {
         let response = await axios.get('/api/devices/')
-        log.debug('getDevices', response.data)
         this.setState({ devices: response.data })
     }
 
