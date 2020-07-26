@@ -37,6 +37,7 @@ class Menu extends Component {
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <AuthenticatedElement loggedIn={this.state.loggedIn}><Nav.Link as={Link} to="/devices">Devices</Nav.Link></AuthenticatedElement>
                         <AdminElement user={this.state.user}><Nav.Link as={Link} to="/terminals">Terminals</Nav.Link></AdminElement>
+                        <AdminElement user={this.state.user}><Nav.Link as={Link} to="/logging">Logs</Nav.Link></AdminElement>
                     </Nav>
                     <Navbar.Text>
                         {this.state.loggedIn === true ? <UserControlElement user={this.state.user} /> : <Button id="LoginButton" href="/login">Login</Button>}

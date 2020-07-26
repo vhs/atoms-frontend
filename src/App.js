@@ -19,6 +19,7 @@ import Home from './Pages/Home'
 import Dashboard from './Pages/Dashboard'
 import Devices from './Pages/Devices'
 import Terminals from './Pages/Terminals'
+import Logging from './Pages/Logging'
 
 import stateMachine from './services/statemachine'
 import apiSvc from './services/api'
@@ -74,6 +75,9 @@ class App extends Component {
             </Route>
             <Route path="/terminals">
               {this.state.user.administrator ? <Terminals user={this.state.user} roles={this.state.roles} /> : <Redirect to="/dashboard" />}
+            </Route>
+            <Route path="/logging">
+              {this.state.user.administrator ? <Logging user={this.state.user} roles={this.state.roles} /> : <Redirect to="/dashboard" />}
             </Route>
             <Route path="/login">
               {this.state.loggedIn ? <Redirect to="/dashboard" /> : <Login />}
