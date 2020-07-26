@@ -114,7 +114,7 @@ class DeviceCard extends Component {
 
     render() {
         return (
-            <Col xs="12" sm="12" md="6" lg="6" className="DeviceCard">
+            <Col xs={12} sm={12} md={6} lg={4} className="DeviceCard">
                 <Row className="spacious">
                     <Col>
                         <Row className="tool-title">
@@ -123,16 +123,16 @@ class DeviceCard extends Component {
                             </Col>
                         </Row>
                         <Row className="spacious">
-                            <Col>
+                            <Col xs="12" sm="12" md="4" lg="4">
                                 <b>Description:</b>
                             </Col>
-                            <Col>
+                            <Col xs="12" sm="12" md="8" lg="8">
                                 {this.state.device.description}
                             </Col>
                         </Row>
                         <AdminElement user={this.state.user}>
                             <Row className="spacious">
-                                <Col>
+                                <Col xs="12" sm="12" md="4" lg="4">
                                     <b> Description:</b>
                                 </Col>
                                 <Col>
@@ -140,7 +140,7 @@ class DeviceCard extends Component {
                                 </Col>
                             </Row>
                             <Row className="spacious">
-                                <Col>
+                                <Col xs="12" sm="12" md="4" lg="4">
                                     <b>Role:</b>
                                 </Col>
                                 <Col>
@@ -153,7 +153,7 @@ class DeviceCard extends Component {
                             </Row>
                         </AdminElement>
                         <Row className="spacious">
-                            <Col>
+                            <Col xs="12" sm="12" md="4" lg="4">
                                 <b>State:</b>
                             </Col>
                             <Col>
@@ -161,7 +161,7 @@ class DeviceCard extends Component {
                             </Col>
                         </Row>
                         <Row className="spacious">
-                            <Col>
+                            <Col xs="12" sm="12" md="4" lg="4">
                                 <b>Last Seen:</b>
                             </Col>
                             <Col>
