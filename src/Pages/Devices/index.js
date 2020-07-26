@@ -12,7 +12,7 @@ import Loading from '../../Components/Loading'
 
 import CustomLogger from '../../lib/custom-logger'
 
-const log = new CustomLogger('tacos:Components:Devices')
+const log = new CustomLogger('tacos:Pages:Devices')
 
 const DeviceCards = ({ devices, roles, user }) => {
     log.debug('DeviceCards', { devices, roles, user })
